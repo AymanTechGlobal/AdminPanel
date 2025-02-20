@@ -1,15 +1,22 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from "../components/Navbar";
 import "../styles/DashboardLayout.css"; // Corrected import
 
 const DashboardLayout = ({ children }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('user');
+    navigate('/login');
   };
 
   return (
@@ -32,8 +39,8 @@ const DashboardLayout = ({ children }) => {
           <ul>
             <li>
               <Link 
-                to="/" 
-                className={`sidebar-link ${location.pathname === '/' ? 'active' : ''}`}
+                to="/dashboard"
+                className={`sidebar-link ${location.pathname === '/dashboard' ? 'active' : ''}`}
                 onClick={() => setSidebarOpen(false)}
               >
                 Dashboard
@@ -41,8 +48,8 @@ const DashboardLayout = ({ children }) => {
             </li>
             <li>
               <Link 
-                to="/users" 
-                className={`sidebar-link ${location.pathname === '/users' ? 'active' : ''}`}
+                to="/dashboard/users"
+                className={`sidebar-link ${location.pathname === '/dashboard/users' ? 'active' : ''}`}
                 onClick={() => setSidebarOpen(false)}
               >
                 Users
@@ -50,8 +57,8 @@ const DashboardLayout = ({ children }) => {
             </li>
             <li>
               <Link 
-                to="/careplans" 
-                className={`sidebar-link ${location.pathname === '/careplans' ? 'active' : ''}`}
+                to="/dashboard/careplans"
+                className={`sidebar-link ${location.pathname === '/dashboard/careplans' ? 'active' : ''}`}
                 onClick={() => setSidebarOpen(false)}
               >
                 Care Plans
@@ -59,8 +66,8 @@ const DashboardLayout = ({ children }) => {
             </li>
             <li>
               <Link 
-                to="/tasks" 
-                className={`sidebar-link ${location.pathname === '/tasks' ? 'active' : ''}`}
+                to="/dashboard/tasks"
+                className={`sidebar-link ${location.pathname === '/dashboard/tasks' ? 'active' : ''}`}
                 onClick={() => setSidebarOpen(false)}
               >
                 Tasks
@@ -68,8 +75,8 @@ const DashboardLayout = ({ children }) => {
             </li>
             <li>
               <Link 
-                to="/messages" 
-                className={`sidebar-link ${location.pathname === '/messages' ? 'active' : ''}`}
+                to="/dashboard/messages"
+                className={`sidebar-link ${location.pathname === '/dashboard/messages' ? 'active' : ''}`}
                 onClick={() => setSidebarOpen(false)}
               >
                 Messages
@@ -77,8 +84,8 @@ const DashboardLayout = ({ children }) => {
             </li>
             <li>
               <Link 
-                to="/reports" 
-                className={`sidebar-link ${location.pathname === '/reports' ? 'active' : ''}`}
+                to="/dashboard/reports"
+                className={`sidebar-link ${location.pathname === '/dashboard/reports' ? 'active' : ''}`}
                 onClick={() => setSidebarOpen(false)}
               >
                 Reports
@@ -86,6 +93,14 @@ const DashboardLayout = ({ children }) => {
             </li>
           </ul>
         </nav>
+        <div className="sidebar-footer">
+          <button 
+            onClick={handleLogout}
+            className="logout-btn"
+          >
+            Logout
+          </button>
+        </div>
       </aside>
 
       {/* Main Content */}

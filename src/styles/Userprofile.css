@@ -1,0 +1,93 @@
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .profile-section {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .profile-info {
+    margin-bottom: 32px;
+  }
+
+  .info-group {
+    margin: 16px 0;
+    display: flex;
+    gap: 12px;
+  }
+
+  .info-group label {
+    font-weight: bold;
+    min-width: 100px;
+  }
+
+  .password-section {
+    border-top: 1px solid #eee;
+    padding-top: 24px;
+  }
+
+  .form-group {
+    margin: 16px 0;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .change-password-btn {
+    background-color: #007bff;
+    color: white;
+  }
+
+  .save-btn {
+    background-color: #28a745;
+    color: white;
+  }
+
+  .cancel-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+
+  .message {
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 4px;
+  }
+
+  .message.error {
+    background-color: #ffebee;
+    color: #c62828;
+  }
+
+  .message.success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+  }
